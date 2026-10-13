@@ -1,18 +1,16 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="description" content="Phirst Player — Tap in. Stay fly. Get access.">
   <title>Phirst Player</title>
 
   <style>
-
-    /* ==========================================
-       GENERAL WEBSITE STYLING
-    ========================================== */
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       font-family: Helvetica, Arial, sans-serif;
@@ -22,20 +20,27 @@
       padding: 0;
     }
 
+    /* HEADER */
+
     header {
       text-align: center;
       padding: 20px;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid #dddddd;
     }
 
     header img {
       height: 60px;
+      width: auto;
+      max-width: 90%;
+      object-fit: contain;
     }
 
     h1 {
       font-size: 32px;
       margin: 10px 0;
     }
+
+    /* SHOP */
 
     .shop {
       display: flex;
@@ -48,10 +53,9 @@
       flex: 1 1 300px;
       max-width: 450px;
       margin: 20px;
-      border: 1px solid #eee;
+      border: 1px solid #eeeeee;
       padding: 20px;
       text-align: center;
-      box-sizing: border-box;
     }
 
     .product img {
@@ -59,102 +63,102 @@
       height: auto;
     }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      border-top: 1px solid #ddd;
-      font-size: 14px;
+    /* PAYPAL */
+
+    .paypal-form {
+      display: inline-grid;
+      justify-items: center;
+      align-content: start;
+      gap: 8px;
     }
 
-    .social-links a {
-      margin: 0 10px;
-      color: black;
-      text-decoration: none;
-    }
-
-    .social-links a:hover {
-      text-decoration: underline;
-    }
-
-
-    /* ==========================================
-       PAYPAL BUTTONS
-    ========================================== */
-
-    .pp-RNCQVJL6UTK98,
-    .pp-EXNNPS2K9X7UN {
+    .paypal-button {
       text-align: center;
       border: none;
-      border-radius: 0.25rem;
-      min-width: 11.625rem;
-      padding: 0 2rem;
-      height: 2.625rem;
+      border-radius: 4px;
+      min-width: 186px;
+      padding: 0 32px;
+      height: 42px;
       font-weight: bold;
-      background-color: #FFD140;
+      background-color: #ffd140;
       color: #000000;
       font-family: "Helvetica Neue", Arial, sans-serif;
-      font-size: 1rem;
-      line-height: 1.25rem;
+      font-size: 16px;
+      line-height: 20px;
       cursor: pointer;
     }
 
+    .paypal-form > img {
+      max-width: 100%;
+      height: auto;
+    }
 
-    /* ==========================================
-       PLAYERS CIRCLE SUBSCRIPTION BOX
-    ========================================== */
+    .paypal-powered {
+      font-size: 12px;
+    }
+
+    .paypal-powered img {
+      height: 14px;
+      width: auto;
+      vertical-align: middle;
+    }
+
+    /* PLAYERS CIRCLE SUBSCRIPTION */
 
     .players-circle-section {
       padding: 20px;
-      background-color: #EFF2F7;
+      background-color: #eff2f7;
     }
 
     .players-circle-container {
       text-align: left;
       background-color: #ffffff;
-      max-width: 540px;
       width: 100%;
+      max-width: 540px;
       margin: 0 auto;
       padding: 30px;
       border-radius: 3px;
-      border: 1px solid #C0CCD9;
-      box-sizing: border-box;
+      border: 1px solid #c0ccd9;
     }
 
     .players-circle-title {
       font-size: 32px;
       font-weight: 700;
-      margin: 0 0 20px 0;
+      margin: 0 0 20px;
     }
 
     .players-circle-intro {
       font-size: 16px;
-      margin: 0 0 20px 0;
       line-height: 1.5;
+      margin: 0 0 20px;
     }
 
     .players-circle-email {
-      padding: 12px;
+      display: block;
       width: 100%;
-      box-sizing: border-box;
+      padding: 12px;
       font-size: 16px;
-      border: 1px solid #C0CCD9;
-      border-radius: 3px;
       color: #000000;
       background-color: #ffffff;
+      border: 1px solid #c0ccd9;
+      border-radius: 3px;
     }
 
     .players-circle-email:focus {
       outline: none;
       border-color: #000000;
+      box-shadow: 0 0 0 1px #000000;
     }
 
     .players-circle-help {
       font-size: 14px;
-      color: #7F8EA3;
-      margin: 8px 0 20px 0;
+      color: #7f8ea3;
+      margin: 8px 0 20px;
+      line-height: 1.4;
     }
 
     .players-circle-submit {
+      display: inline-block;
       padding: 12px 24px;
       font-size: 16px;
       font-weight: 700;
@@ -181,6 +185,7 @@
       font-size: 15px;
       font-weight: 600;
       line-height: 1.5;
+      overflow-wrap: anywhere;
     }
 
     .players-circle-frame {
@@ -190,13 +195,28 @@
       border: 0;
     }
 
+    /* FOOTER */
 
-    /* ==========================================
-       MOBILE RESPONSIVENESS
-    ========================================== */
+    footer {
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #dddddd;
+      font-size: 14px;
+    }
+
+    .social-links a {
+      margin: 0 10px;
+      color: #000000;
+      text-decoration: none;
+    }
+
+    .social-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* MOBILE RESPONSIVENESS */
 
     @media (max-width: 600px) {
-
       header img {
         height: 50px;
       }
@@ -210,8 +230,9 @@
       }
 
       .product {
-        margin: 10px 0;
+        flex: 1 1 100%;
         width: 100%;
+        margin: 10px 0;
       }
 
       .players-circle-section {
@@ -229,16 +250,11 @@
 
       .players-circle-intro {
         font-size: 16px;
-        line-height: 1.5;
       }
 
       .players-circle-email {
         font-size: 16px;
         padding: 12px;
-      }
-
-      .players-circle-help {
-        font-size: 14px;
       }
 
       .players-circle-submit {
@@ -250,63 +266,34 @@
         display: inline-block;
         margin: 5px 6px;
       }
-
     }
 
   </style>
-
 </head>
-
 
 <body>
 
-
-  <!-- ==========================================
-       WEBSITE HEADER
-  ========================================== -->
+  <!-- HEADER -->
 
   <header>
-
-    <img
-      src="walking-logo.png"
-      alt="Phirst Player Logo"
-    >
-
+    <img src="walking-logo.png" alt="Phirst Player Logo">
     <h1>PHIRST PLAYER</h1>
-
   </header>
-
-
-
-  <!-- ==========================================
-       MAIN WEBSITE CONTENT
-  ========================================== -->
 
   <main>
 
-
     <!-- PLAYERS CIRCLE INTRO -->
 
-    <section style="text-align: center; padding: 20px;">
-
+    <section style="text-align:center; padding:20px;">
       <h2>Welcome to the Players Circle</h2>
-
       <p>Tap in. Stay fly. Get access.</p>
-
     </section>
 
-
-
-    <!-- ==========================================
-         SHOP
-    ========================================== -->
+    <!-- SHOP -->
 
     <section class="shop">
 
-
-      <!-- ======================================
-           PRODUCT 1: EMBROIDERED TEE
-      ====================================== -->
+      <!-- PRODUCT 1: EMBROIDERED TEE -->
 
       <div class="product">
 
@@ -316,59 +303,40 @@
         >
 
         <h3>Embroidered Tee</h3>
-
         <p>$25.00</p>
 
-
-        <!-- PAYPAL PAYMENT BUTTON -->
-
         <form
+          class="paypal-form"
           action="https://www.paypal.com/ncp/payment/RNCQVJL6UTK98"
           method="post"
           target="_blank"
-          style="
-            display: inline-grid;
-            justify-items: center;
-            align-content: start;
-            gap: 0.5rem;
-          "
         >
 
           <input
-            class="pp-RNCQVJL6UTK98"
+            class="paypal-button"
             type="submit"
             value="Buy Now"
           >
 
           <img
             src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg"
-            alt="Payment cards"
+            alt="Accepted payment methods"
           >
 
-          <section style="font-size: 0.75rem;">
-
+          <div class="paypal-powered">
             Powered by
 
             <img
               src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg"
               alt="PayPal"
-              style="
-                height: 0.875rem;
-                vertical-align: middle;
-              "
             >
-
-          </section>
+          </div>
 
         </form>
 
       </div>
 
-
-
-      <!-- ======================================
-           PRODUCT 2: GOD'S FAVORITE PLAYER TEE
-      ====================================== -->
+      <!-- PRODUCT 2: GOD'S FAVORITE PLAYER TEE -->
 
       <div class="product">
 
@@ -378,78 +346,54 @@
         >
 
         <h3>Vinyl Tee</h3>
-
         <p>$50.00</p>
 
-
-        <!-- PAYPAL PAYMENT BUTTON -->
-
         <form
+          class="paypal-form"
           action="https://www.paypal.com/ncp/payment/EXNNPS2K9X7UN"
           method="post"
           target="_blank"
-          style="
-            display: inline-grid;
-            justify-items: center;
-            align-content: start;
-            gap: 0.5rem;
-          "
         >
 
           <input
-            class="pp-EXNNPS2K9X7UN"
+            class="paypal-button"
             type="submit"
             value="Buy Now"
           >
 
           <img
             src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg"
-            alt="Payment cards"
+            alt="Accepted payment methods"
           >
 
-          <section style="font-size: 0.75rem;">
-
+          <div class="paypal-powered">
             Powered by
 
             <img
               src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg"
               alt="PayPal"
-              style="
-                height: 0.875rem;
-                vertical-align: middle;
-              "
             >
-
-          </section>
+          </div>
 
         </form>
 
       </div>
 
-
     </section>
 
-
-
-    <!-- ==========================================
-         PLAYERS CIRCLE SUBSCRIPTION
-    ========================================== -->
+    <!-- PLAYERS CIRCLE SUBSCRIPTION -->
 
     <section class="players-circle-section">
 
       <div class="players-circle-container">
 
-
         <h2 class="players-circle-title">
           Welcome!
         </h2>
 
-
         <p class="players-circle-intro">
           Aye P!! Subscribe to the Players Circle and stay updated.
         </p>
-
-
 
         <!-- SUBSCRIPTION FORM -->
 
@@ -470,14 +414,9 @@
             required
           >
 
-
           <p class="players-circle-help">
-            Provide your email address to subscribe. For e.g abc@xyz.com
+            Provide your email address to subscribe. For e.g. abc@xyz.com
           </p>
-
-
-
-          <!-- SUBSCRIBE BUTTON -->
 
           <button
             id="players-circle-submit"
@@ -487,14 +426,9 @@
             SUBSCRIBE
           </button>
 
-
         </form>
 
-
-
-        <!-- ======================================
-             SUBSCRIPTION RESPONSE MESSAGE
-        ====================================== -->
+        <!-- RESPONSE MESSAGE -->
 
         <div
           id="players-circle-message"
@@ -503,11 +437,7 @@
           aria-live="polite"
         ></div>
 
-
-
-        <!-- ======================================
-             HIDDEN GOOGLE APPS SCRIPT RESPONSE FRAME
-        ====================================== -->
+        <!-- HIDDEN RESPONSE FRAME -->
 
         <iframe
           name="players-circle-frame"
@@ -517,24 +447,15 @@
           aria-hidden="true"
         ></iframe>
 
-
       </div>
 
     </section>
 
-
   </main>
 
-
-
-  <!-- ==========================================
-       WEBSITE FOOTER
-  ========================================== -->
+  <!-- FOOTER -->
 
   <footer>
-
-
-    <!-- SOCIAL MEDIA LINKS -->
 
     <div class="social-links">
 
@@ -578,37 +499,23 @@
 
     </div>
 
-
-
-    <!-- CONTACT EMAIL -->
-
     <p>
-
       Contact:
 
       <a href="mailto:support@phirstplayer.com">
         support@phirstplayer.com
       </a>
-
     </p>
-
 
   </footer>
 
-
-
-  <!-- ==========================================
-       PLAYERS CIRCLE RESPONSE SCRIPT
-  ========================================== -->
+  <!-- PLAYERS CIRCLE SUBSCRIPTION SCRIPT -->
 
   <script>
 
     (function () {
 
-
-      // ========================================
-      // GET WEBSITE ELEMENTS
-      // ========================================
+      "use strict";
 
       const form = document.getElementById(
         "players-circle-form"
@@ -630,23 +537,15 @@
         "players-circle-frame"
       );
 
-
-      // ========================================
-      // SUBMISSION VARIABLES
-      // ========================================
-
       let currentToken = null;
-
       let submissionTimer = null;
-
       let isSubmitting = false;
 
       const originalButtonText = "SUBSCRIBE";
+      const timeoutMilliseconds = 45000;
 
 
-      // ========================================
-      // RESET SUBMISSION
-      // ========================================
+      // RESET BUTTON AND TIMER
 
       function resetSubmission() {
 
@@ -654,12 +553,11 @@
 
         submitButton.disabled = false;
 
-        submitButton.textContent =
-          originalButtonText;
+        submitButton.textContent = originalButtonText;
 
-        if (submissionTimer) {
+        if (submissionTimer !== null) {
 
-          clearTimeout(submissionTimer);
+          window.clearTimeout(submissionTimer);
 
           submissionTimer = null;
 
@@ -668,14 +566,23 @@
       }
 
 
-      // ========================================
-      // SUBMIT SUBSCRIPTION
-      // ========================================
+      // DISPLAY RESPONSE
+
+      function showMessage(text, isSuccess) {
+
+        message.style.display = "block";
+
+        message.style.color =
+          isSuccess ? "#000000" : "#b00020";
+
+        message.textContent = text;
+
+      }
+
+
+      // SUBMIT FORM
 
       form.addEventListener("submit", function (event) {
-
-
-        // Prevent multiple simultaneous submissions.
 
         if (isSubmitting) {
 
@@ -685,9 +592,6 @@
 
         }
 
-
-        // Validate email.
-
         if (!form.reportValidity()) {
 
           event.preventDefault();
@@ -696,11 +600,9 @@
 
         }
 
-
         isSubmitting = true;
 
-
-        // Create unique submission token.
+        // Generate unique submission token.
 
         currentToken =
           Date.now().toString() +
@@ -708,15 +610,11 @@
           Math.random().toString(36).substring(2);
 
 
-
-        // ======================================
-        // ADD CALLBACK TOKEN
-        // ======================================
+        // Create callback token field.
 
         let tokenInput = form.querySelector(
           'input[name="callbackToken"]'
         );
-
 
         if (!tokenInput) {
 
@@ -730,154 +628,93 @@
 
         }
 
-
         tokenInput.value = currentToken;
 
 
-
-        // ======================================
-        // DISPLAY LOADING STATE
-        // ======================================
+        // Display loading state.
 
         submitButton.disabled = true;
 
-        submitButton.textContent =
-          "SUBMITTING...";
+        submitButton.textContent = "SUBMITTING...";
 
-        message.style.display = "block";
-
-        message.style.color = "#000000";
-
-        message.textContent =
-          "Submitting your subscription...";
+        showMessage(
+          "Submitting your subscription...",
+          true
+        );
 
 
-
-        // ======================================
         // TIMEOUT PROTECTION
-        // ======================================
 
-        submissionTimer = setTimeout(function () {
+        submissionTimer = window.setTimeout(function () {
 
+          if (!isSubmitting) return;
 
           resetSubmission();
 
-
-          message.style.display = "block";
-
-          message.style.color = "#b00020";
-
-          message.textContent =
+          showMessage(
             "We haven't received confirmation yet. " +
-            "Check your inbox before submitting again.";
+            "Your submission may still have processed. " +
+            "Check your inbox or try again in a moment.",
+            false
+          );
 
-
-        }, 45000);
-
-
-        // The form now submits normally to the
-        // hidden iframe using the existing Apps Script URL.
+        }, timeoutMilliseconds);
 
       });
 
 
-
-      // ========================================
-      // RECEIVE GOOGLE APPS SCRIPT RESPONSE
-      // ========================================
+      // RECEIVE APPS SCRIPT RESPONSE
 
       window.addEventListener("message", function (event) {
 
-
         // Only accept messages from our response iframe.
 
-        if (
-          event.source !== responseFrame.contentWindow
-        ) {
-
+        if (event.source !== responseFrame.contentWindow) {
           return;
-
         }
-
 
         const data = event.data;
 
-
-        // Ignore unrelated messages.
-
         if (
           !data ||
-          data.type !== "playersCircleResponse"
-        ) {
-
-          return;
-
-        }
-
-
-        // Match response to current submission.
-
-        if (
+          data.type !== "playersCircleResponse" ||
           !isSubmitting ||
           data.token !== currentToken
         ) {
-
           return;
-
         }
 
 
-
-        // ======================================
-        // RESTORE SUBSCRIBE BUTTON
-        // ======================================
+        // Restore subscribe button.
 
         resetSubmission();
 
 
+        // Display response.
 
-        // ======================================
-        // DISPLAY RESPONSE
-        // ======================================
+        showMessage(
+          data.message || (
+            data.success
+              ? "You're in! Welcome to the Players Circle. 🏆"
+              : "We couldn't complete your subscription. Please try again."
+          ),
+          data.success === true
+        );
 
-        message.style.display = "block";
 
-        message.textContent = data.message;
+        // Clear email field only after success.
 
-
-
-        // ======================================
-        // SUCCESSFUL SUBSCRIPTION
-        // ======================================
-
-        if (data.success) {
-
-          message.style.color = "#000000";
+        if (data.success === true) {
 
           emailInput.value = "";
 
         }
 
-
-        // ======================================
-        // FAILED SUBSCRIPTION
-        // ======================================
-
-        else {
-
-          message.style.color = "#b00020";
-
-        }
-
-
       });
-
 
     })();
 
   </script>
 
-
 </body>
-
 </html>
