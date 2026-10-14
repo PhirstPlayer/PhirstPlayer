@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -148,13 +147,6 @@
       outline: none;
       border-color: #000000;
       box-shadow: 0 0 0 1px #000000;
-    }
-
-    .players-circle-help {
-      font-size: 14px;
-      color: #7f8ea3;
-      margin: 8px 0 20px;
-      line-height: 1.4;
     }
 
     .players-circle-submit {
@@ -414,10 +406,6 @@
             required
           >
 
-          <p class="players-circle-help">
-            Provide your email address to subscribe. For e.g. abc@xyz.com
-          </p>
-
           <button
             id="players-circle-submit"
             class="players-circle-submit"
@@ -511,132 +499,134 @@
 
   <!-- PLAYERS CIRCLE SUBSCRIPTION SCRIPT -->
 
+  <script>
 
-<script>
+  (function () {
 
-(function () {
+    "use strict";
 
-  "use strict";
+    const form = document.getElementById("players-circle-form");
+    const emailInput = document.getElementById("players-circle-email");
+    const submitButton = document.getElementById("players-circle-submit");
+    const message = document.getElementById("players-circle-message");
 
-  const form = document.getElementById("players-circle-form");
-  const emailInput = document.getElementById("players-circle-email");
-  const submitButton = document.getElementById("players-circle-submit");
-  const message = document.getElementById("players-circle-message");
+    let currentToken = "";
+    let isSubmitting = false;
+    let submissionTimer = null;
 
-  let currentToken = "";
-  let isSubmitting = false;
-  let submissionTimer = null;
+    function resetButton() {
 
-  function resetButton() {
+      isSubmitting = false;
 
-    isSubmitting = false;
+      submitButton.disabled = false;
+      submitButton.textContent = "SUBSCRIBE";
 
-    submitButton.disabled = false;
-    submitButton.textContent = "SUBSCRIBE";
-
-    if (submissionTimer) {
-      clearTimeout(submissionTimer);
-      submissionTimer = null;
-    }
-
-  }
-
-  function showMessage(text, success) {
-
-    message.style.display = "block";
-
-    message.style.color = success ? "#000000" : "#b00020";
-
-    message.textContent = text;
-
-  }
-
-  form.addEventListener("submit", function(event) {
-
-    if (isSubmitting) {
-      event.preventDefault();
-      return;
-    }
-
-    if (!form.reportValidity()) {
-      event.preventDefault();
-      return;
-    }
-
-    isSubmitting = true;
-
-    currentToken =
-      Date.now() + "-" +
-      Math.random().toString(36).substring(2);
-
-    let tokenInput = form.querySelector(
-      'input[name="callbackToken"]'
-    );
-
-    if (!tokenInput) {
-
-      tokenInput = document.createElement("input");
-
-      tokenInput.type = "hidden";
-      tokenInput.name = "callbackToken";
-
-      form.appendChild(tokenInput);
+      if (submissionTimer) {
+        clearTimeout(submissionTimer);
+        submissionTimer = null;
+      }
 
     }
 
-    tokenInput.value = currentToken;
+    function showMessage(text, success) {
 
-    submitButton.disabled = true;
-    submitButton.textContent = "SUBMITTING...";
+      message.style.display = "block";
 
-    showMessage("Submitting your subscription...", true);
+      message.style.color = success ? "#000000" : "#b00020";
 
-    submissionTimer = setTimeout(function() {
+      message.textContent = text;
+
+    }
+
+    form.addEventListener("submit", function(event) {
+
+      if (isSubmitting) {
+        event.preventDefault();
+        return;
+      }
+
+      if (!form.reportValidity()) {
+        event.preventDefault();
+        return;
+      }
+
+      isSubmitting = true;
+
+      currentToken =
+        Date.now() + "-" +
+        Math.random().toString(36).substring(2);
+
+      let tokenInput = form.querySelector(
+        'input[name="callbackToken"]'
+      );
+
+      if (!tokenInput) {
+
+        tokenInput = document.createElement("input");
+
+        tokenInput.type = "hidden";
+        tokenInput.name = "callbackToken";
+
+        form.appendChild(tokenInput);
+
+      }
+
+      tokenInput.value = currentToken;
+
+      submitButton.disabled = true;
+      submitButton.textContent = "SUBMITTING...";
+
+      showMessage("Submitting your subscription...", true);
+
+      submissionTimer = setTimeout(function() {
+
+        if (!isSubmitting) return;
+
+        resetButton();
+
+        showMessage(
+          "We couldn't confirm your subscription yet. " +
+          "Please try again in a moment.",
+          false
+        );
+
+      }, 30000);
+
+    });
+
+
+    // RECEIVE RESPONSE FROM APPS SCRIPT
+
+    window.addEventListener("message", function(event) {
+
+      const data = event.data;
+
+      if (!data || typeof data !== "object") return;
+
+      if (data.type !== "playersCircleResponse") return;
 
       if (!isSubmitting) return;
+
+      if (data.token !== currentToken) return;
 
       resetButton();
 
       showMessage(
-        "We haven't received confirmation yet. " +
-        "Check your inbox and Google Sheets before trying again.",
-        false
+        data.message || "Subscription response received.",
+        data.success === true
       );
 
-    }, 30000);
+      if (data.success === true) {
 
-  });
+        emailInput.value = "";
 
+      }
 
-  // RECEIVE RESPONSE FROM APPS SCRIPT
+    });
 
-  window.addEventListener("message", function(event) {
+  })();
 
-    const data = event.data;
+  </script>
 
-    if (!data || typeof data !== "object") return;
-
-    if (data.type !== "playersCircleResponse") return;
-
-    if (!isSubmitting) return;
-
-    if (data.token !== currentToken) return;
-
-    resetButton();
-
-    showMessage(
-      data.message || "Subscription response received.",
-      data.success === true
-    );
-
-    if (data.success === true) {
-
-      emailInput.value = "";
-
-    }
-
-  });
-
-})();
-
-</script>
+</body>
+</html>
