@@ -187,6 +187,13 @@
       overflow-wrap: anywhere;
     }
 
+    .players-circle-frame {
+      display: none;
+      width: 0;
+      height: 0;
+      border: 0;
+    }
+
     /* FOOTER */
 
     footer {
@@ -389,7 +396,12 @@
 
         <!-- SUBSCRIPTION FORM -->
 
-        <form id="players-circle-form">
+        <form
+          id="players-circle-form"
+          action="https://script.google.com/macros/s/AKfycbz4PsD4xvVzoyw6vBnfiRmNBNlSOFOeiZgATOAqvBt5-ZGD-5HeOBKNfdcjE_dfieYi/exec"
+          method="POST"
+          target="players-circle-frame"
+        >
 
           <input
             type="email"
@@ -423,6 +435,16 @@
           role="status"
           aria-live="polite"
         ></div>
+
+        <!-- HIDDEN RESPONSE FRAME -->
+
+        <iframe
+          name="players-circle-frame"
+          id="players-circle-frame"
+          class="players-circle-frame"
+          title="Players Circle response"
+          aria-hidden="true"
+        ></iframe>
 
       </div>
 
@@ -486,8 +508,7 @@
 
   </footer>
 
-
-  <!-- PLAYERS CIRCLE JSONP SUBSCRIPTION SCRIPT -->
+  <!-- PLAYERS CIRCLE SUBSCRIPTION SCRIPT -->
 
   <script>
 
@@ -495,60 +516,110 @@
 
     "use strict";
 
-    const SCRIPT_URL =
-      "https://script.google.com/macros/s/AKfycbz4PsD4xvVzoyw6vBnfiRmNBNlSOFOeiZgATOAqvBt5-ZGD-5HeOBKNfdcjE_dfieYi/exec";
-
     const form = document.getElementById("players-circle-form");
     const emailInput = document.getElementById("players-circle-email");
     const submitButton = document.getElementById("players-circle-submit");
     const message = document.getElementById("players-circle-message");
 
-    let isSubmitting = false;
-    let currentScript = null;
-    let submissionTimer = null;
     let currentToken = "";
+    let isSubmitting = false;
+    let submissionTimer = null;
 
-    function showMessage(text, success) {
+    function resetButton() {
 
-      message.style.display = "block";
-      message.style.color = success ? "#000000" : "#b00020";
-      message.textContent = text;
+      isSubmitting = false;
 
-    }
-
-    function cleanupRequest() {
+      submitButton.disabled = false;
+      submitButton.textContent = "SUBSCRIBE";
 
       if (submissionTimer) {
         clearTimeout(submissionTimer);
         submissionTimer = null;
       }
 
-      if (currentScript) {
-        currentScript.remove();
-        currentScript = null;
+    }
+
+    function showMessage(text, success) {
+
+      message.style.display = "block";
+
+      message.style.color = success ? "#000000" : "#b00020";
+
+      message.textContent = text;
+
+    }
+
+    form.addEventListener("submit", function(event) {
+
+      if (isSubmitting) {
+        event.preventDefault();
+        return;
       }
 
-      delete window.playersCircleCallback;
+      if (!form.reportValidity()) {
+        event.preventDefault();
+        return;
+      }
 
-    }
+      isSubmitting = true;
 
-    function resetButton() {
+      currentToken =
+        Date.now() + "-" +
+        Math.random().toString(36).substring(2);
 
-      isSubmitting = false;
-      submitButton.disabled = false;
-      submitButton.textContent = "SUBSCRIBE";
+      let tokenInput = form.querySelector(
+        'input[name="callbackToken"]'
+      );
 
-    }
+      if (!tokenInput) {
 
-    function finishRequest(data) {
+        tokenInput = document.createElement("input");
 
-      if (!isSubmitting) return;
+        tokenInput.type = "hidden";
+        tokenInput.name = "callbackToken";
+
+        form.appendChild(tokenInput);
+
+      }
+
+      tokenInput.value = currentToken;
+
+      submitButton.disabled = true;
+      submitButton.textContent = "SUBMITTING...";
+
+      showMessage("Submitting your subscription...", true);
+
+      submissionTimer = setTimeout(function() {
+
+        if (!isSubmitting) return;
+
+        resetButton();
+
+        showMessage(
+          "We couldn't confirm your subscription yet. " +
+          "Please try again in a moment.",
+          false
+        );
+
+      }, 30000);
+
+    });
+
+
+    // RECEIVE RESPONSE FROM APPS SCRIPT
+
+    window.addEventListener("message", function(event) {
+
+      const data = event.data;
 
       if (!data || typeof data !== "object") return;
 
+      if (data.type !== "playersCircleResponse") return;
+
+      if (!isSubmitting) return;
+
       if (data.token !== currentToken) return;
 
-      cleanupRequest();
       resetButton();
 
       showMessage(
@@ -557,83 +628,10 @@
       );
 
       if (data.success === true) {
+
         emailInput.value = "";
+
       }
-
-    }
-
-    form.addEventListener("submit", function(event) {
-
-      event.preventDefault();
-
-      if (isSubmitting) return;
-
-      if (!form.reportValidity()) return;
-
-      const email = emailInput.value.trim().toLowerCase();
-
-      if (!email) return;
-
-      isSubmitting = true;
-
-      currentToken =
-        Date.now() + "-" +
-        Math.random().toString(36).substring(2);
-
-      submitButton.disabled = true;
-      submitButton.textContent = "SUBMITTING...";
-
-      showMessage("Submitting your subscription...", true);
-
-      // Create the global JSONP callback.
-      window.playersCircleCallback = function(data) {
-        finishRequest(data);
-      };
-
-      // Build the Apps Script request.
-      const params = new URLSearchParams({
-        email: email,
-        callback: "playersCircleCallback",
-        callbackToken: currentToken
-      });
-
-      currentScript = document.createElement("script");
-
-      currentScript.src =
-        SCRIPT_URL + "?" + params.toString();
-
-      currentScript.async = true;
-
-      currentScript.onerror = function() {
-
-        if (!isSubmitting) return;
-
-        cleanupRequest();
-        resetButton();
-
-        showMessage(
-          "We couldn't connect to the subscription service. Please try again.",
-          false
-        );
-
-      };
-
-      document.head.appendChild(currentScript);
-
-      // Safety timeout if Apps Script never responds.
-      submissionTimer = setTimeout(function() {
-
-        if (!isSubmitting) return;
-
-        cleanupRequest();
-        resetButton();
-
-        showMessage(
-          "We couldn't confirm your subscription yet. Please try again.",
-          false
-        );
-
-      }, 30000);
 
     });
 
