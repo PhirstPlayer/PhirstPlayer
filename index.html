@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,6 +38,47 @@
     h1 {
       font-size: 32px;
       margin: 10px 0;
+    }
+
+    /* INTRO */
+
+    .welcome-section {
+      text-align: center;
+      padding: 20px 20px 10px;
+    }
+
+    .welcome-section h2 {
+      font-size: 28px;
+    }
+
+    .welcome-section p {
+      font-size: 20px;
+    }
+
+    /* GAME SECTION */
+
+    .game-section {
+      width: 100%;
+      padding: 15px 20px 40px;
+      text-align: center;
+    }
+
+    .game-container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      overflow: hidden;
+      border: 1px solid #dddddd;
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    .game-frame {
+      display: block;
+      width: 100%;
+      height: 750px;
+      border: none;
+      background: #ffffff;
     }
 
     /* SHOP */
@@ -213,15 +255,36 @@
       text-decoration: underline;
     }
 
-    /* MOBILE RESPONSIVENESS */
+    /* MOBILE */
 
     @media (max-width: 600px) {
+
       header img {
         height: 50px;
       }
 
       h1 {
         font-size: 26px;
+      }
+
+      .welcome-section h2 {
+        font-size: 24px;
+      }
+
+      .welcome-section p {
+        font-size: 18px;
+      }
+
+      .game-section {
+        padding: 10px 10px 30px;
+      }
+
+      .game-container {
+        border-radius: 5px;
+      }
+
+      .game-frame {
+        height: 680px;
       }
 
       .shop {
@@ -281,18 +344,37 @@
 
   <main>
 
-    <!-- PLAYERS CIRCLE INTRO -->
+    <!-- WELCOME MESSAGE -->
 
-    <section style="text-align:center; padding:20px;">
+    <section class="welcome-section">
       <h2>Welcome to the Players Circle</h2>
       <p>Tap in. Stay fly. Get access.</p>
+    </section>
+
+    <!-- PHIRST PLAYER GAME -->
+
+    <section class="game-section">
+
+      <div class="game-container">
+
+        <iframe
+          class="game-frame"
+          src="https://playerphirst.lovable.app"
+          title="Phirst Player Game"
+          allow="fullscreen; autoplay; gamepad"
+          allowfullscreen
+          loading="eager"
+        ></iframe>
+
+      </div>
+
     </section>
 
     <!-- SHOP -->
 
     <section class="shop">
 
-      <!-- PRODUCT 1: EMBROIDERED TEE -->
+      <!-- EMBROIDERED TEE -->
 
       <div class="product">
 
@@ -335,7 +417,7 @@
 
       </div>
 
-      <!-- PRODUCT 2: GOD'S FAVORITE PLAYER TEE -->
+      <!-- VINYL TEE -->
 
       <div class="product">
 
@@ -394,8 +476,6 @@
           Aye P!! Subscribe to the Players Circle and stay updated.
         </p>
 
-        <!-- SUBSCRIPTION FORM -->
-
         <form
           id="players-circle-form"
           action="https://script.google.com/macros/s/AKfycbz4PsD4xvVzoyw6vBnfiRmNBNlSOFOeiZgATOAqvBt5-ZGD-5HeOBKNfdcjE_dfieYi/exec"
@@ -427,7 +507,7 @@
 
         </form>
 
-        <!-- RESPONSE MESSAGE -->
+        <!-- SUBSCRIPTION RESPONSE -->
 
         <div
           id="players-circle-message"
@@ -542,9 +622,7 @@
     function showMessage(text, success) {
 
       message.style.display = "block";
-
       message.style.color = success ? "#000000" : "#b00020";
-
       message.textContent = text;
 
     }
@@ -574,7 +652,6 @@
       if (!tokenInput) {
 
         tokenInput = document.createElement("input");
-
         tokenInput.type = "hidden";
         tokenInput.name = "callbackToken";
 
@@ -605,7 +682,6 @@
 
     });
 
-
     // RECEIVE RESPONSE FROM APPS SCRIPT
 
     window.addEventListener("message", function(event) {
@@ -628,9 +704,7 @@
       );
 
       if (data.success === true) {
-
         emailInput.value = "";
-
       }
 
     });
