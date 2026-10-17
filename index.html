@@ -40,7 +40,7 @@
       margin: 10px 0;
     }
 
-    /* INTRO */
+    /* WELCOME */
 
     .welcome-section {
       text-align: center;
@@ -55,7 +55,7 @@
       font-size: 20px;
     }
 
-    /* GAME SECTION */
+    /* GAME */
 
     .game-section {
       width: 100%;
@@ -81,74 +81,67 @@
       background: #ffffff;
     }
 
-    /* SHOP */
+    /* PRODUCT */
 
     .shop {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
       padding: 20px;
     }
 
     .product {
-      flex: 1 1 300px;
+      width: 100%;
       max-width: 450px;
       margin: 20px;
-      border: 1px solid #eeeeee;
       padding: 20px;
       text-align: center;
     }
 
     .product img {
-      max-width: 100%;
+      display: block;
+      width: 100%;
       height: auto;
+      margin: 0 auto;
     }
 
-    /* PAYPAL */
-
-    .paypal-form {
-      display: inline-grid;
-      justify-items: center;
-      align-content: start;
-      gap: 8px;
+    .product h3 {
+      font-size: 22px;
+      margin: 20px 0 10px;
     }
 
-    .paypal-button {
+    .product-price {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 10px 0 20px;
+    }
+
+    /* PAYPAL BUTTON */
+
+    .paypal-button-wrapper {
+      text-align: center;
+    }
+
+    .pp-RNCQVJL6UTK98 {
       text-align: center;
       border: none;
-      border-radius: 4px;
-      min-width: 186px;
-      padding: 0 32px;
-      height: 42px;
+      border-radius: 0.25rem;
+      min-width: 11.625rem;
+      padding: 0 2rem;
+      height: 2.625rem;
       font-weight: bold;
-      background-color: #ffd140;
+      background-color: #FFD140;
       color: #000000;
       font-family: "Helvetica Neue", Arial, sans-serif;
-      font-size: 16px;
-      line-height: 20px;
+      font-size: 1rem;
+      line-height: 1.25rem;
       cursor: pointer;
     }
 
-    .paypal-form > img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    .paypal-powered {
-      font-size: 12px;
-    }
-
-    .paypal-powered img {
-      height: 14px;
-      width: auto;
-      vertical-align: middle;
-    }
-
-    /* PLAYERS CIRCLE SUBSCRIPTION */
+    /* PLAYERS CIRCLE */
 
     .players-circle-section {
       padding: 20px;
-      background-color: #eff2f7;
+      background-color: #ffffff;
     }
 
     .players-circle-container {
@@ -279,10 +272,6 @@
         padding: 10px 10px 30px;
       }
 
-      .game-container {
-        border-radius: 5px;
-      }
-
       .game-frame {
         height: 680px;
       }
@@ -292,9 +281,12 @@
       }
 
       .product {
-        flex: 1 1 100%;
-        width: 100%;
         margin: 10px 0;
+        padding: 10px;
+      }
+
+      .product h3 {
+        font-size: 20px;
       }
 
       .players-circle-section {
@@ -370,93 +362,74 @@
 
     </section>
 
-    <!-- SHOP -->
+    <!-- EMBROIDERED LONG SLEEVE -->
 
     <section class="shop">
 
-      <!-- EMBROIDERED TEE -->
-
       <div class="product">
 
         <img
-          src="walking-logo.png"
-          alt="Walking Figure Tee"
+          src="embroidered-long-sleeve.png"
+          alt="Phirst Player Embroidered Long Sleeve"
         >
 
-        <h3>Embroidered Tee</h3>
-        <p>$25.00</p>
+        <h3>Embroidered Long Sleeve</h3>
 
-        <form
-          class="paypal-form"
-          action="https://www.paypal.com/ncp/payment/RNCQVJL6UTK98"
-          method="post"
-          target="_blank"
-        >
+        <p class="product-price">$49.99</p>
 
-          <input
-            class="paypal-button"
-            type="submit"
-            value="Buy Now"
+        <!-- PAYPAL CHECKOUT -->
+
+        <div class="paypal-button-wrapper">
+
+          <style>
+            .pp-RNCQVJL6UTK98 {
+              text-align: center;
+              border: none;
+              border-radius: 0.25rem;
+              min-width: 11.625rem;
+              padding: 0 2rem;
+              height: 2.625rem;
+              font-weight: bold;
+              background-color: #FFD140;
+              color: #000000;
+              font-family: "Helvetica Neue", Arial, sans-serif;
+              font-size: 1rem;
+              line-height: 1.25rem;
+              cursor: pointer;
+            }
+          </style>
+
+          <form
+            action="https://www.paypal.com/ncp/payment/RNCQVJL6UTK98"
+            method="post"
+            target="_blank"
+            style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;"
           >
 
-          <img
-            src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg"
-            alt="Accepted payment methods"
-          >
-
-          <div class="paypal-powered">
-            Powered by
+            <input
+              class="pp-RNCQVJL6UTK98"
+              type="submit"
+              value="Buy Now"
+            />
 
             <img
-              src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg"
-              alt="PayPal"
-            >
-          </div>
+              src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg"
+              alt="cards"
+            />
 
-        </form>
+            <section style="font-size:0.75rem;">
+              Powered by
 
-      </div>
+              <img
+                src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg"
+                alt="paypal"
+                style="height:0.875rem;vertical-align:middle;"
+              />
+            </section>
 
-      <!-- VINYL TEE -->
+          </form>
 
-      <div class="product">
-
-        <img
-          src="gods-favorite-player-tee.png"
-          alt="God's Favorite Player Tee"
-        >
-
-        <h3>Vinyl Tee</h3>
-        <p>$50.00</p>
-
-        <form
-          class="paypal-form"
-          action="https://www.paypal.com/ncp/payment/EXNNPS2K9X7UN"
-          method="post"
-          target="_blank"
-        >
-
-          <input
-            class="paypal-button"
-            type="submit"
-            value="Buy Now"
-          >
-
-          <img
-            src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg"
-            alt="Accepted payment methods"
-          >
-
-          <div class="paypal-powered">
-            Powered by
-
-            <img
-              src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg"
-              alt="PayPal"
-            >
-          </div>
-
-        </form>
+        </div>
 
       </div>
 
@@ -507,16 +480,12 @@
 
         </form>
 
-        <!-- SUBSCRIPTION RESPONSE -->
-
         <div
           id="players-circle-message"
           class="players-circle-message"
           role="status"
           aria-live="polite"
         ></div>
-
-        <!-- HIDDEN RESPONSE FRAME -->
 
         <iframe
           name="players-circle-frame"
@@ -580,7 +549,6 @@
 
     <p>
       Contact:
-
       <a href="mailto:support@phirstplayer.com">
         support@phirstplayer.com
       </a>
