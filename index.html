@@ -20,8 +20,6 @@
       padding: 0;
     }
 
-    /* HEADER */
-
     header {
       text-align: center;
       padding: 20px;
@@ -81,7 +79,7 @@
       background: #ffffff;
     }
 
-    /* PRODUCT */
+    /* PRODUCTS */
 
     .shop {
       display: flex;
@@ -137,7 +135,7 @@
       cursor: pointer;
     }
 
-    /* PAYHIP DIGITAL PRODUCT */
+    /* PAYHIP */
 
     .payhip-button {
       display: inline-block;
@@ -155,7 +153,15 @@
       opacity: 0.8;
     }
 
-    /* NEWSLETTER LINK */
+    .guide-cover {
+      display: block;
+      width: 100%;
+      max-width: 340px;
+      height: auto;
+      margin: 0 auto 20px;
+    }
+
+    /* NEWSLETTER POPUP TRIGGER */
 
     .newsletter-open {
       display: block;
@@ -386,6 +392,10 @@
         font-size: 20px;
       }
 
+      .guide-cover {
+        max-width: 300px;
+      }
+
       .players-circle-popup {
         padding: 25px 0;
       }
@@ -431,7 +441,7 @@
 
   <main>
 
-    <!-- WELCOME MESSAGE -->
+    <!-- WELCOME -->
 
     <section class="welcome-section">
       <h2>Welcome to the Players Circle</h2>
@@ -466,8 +476,6 @@
         <h3>Embroidered Long Sleeve</h3>
 
         <p class="product-price">$49.99</p>
-
-        <!-- PAYPAL CHECKOUT -->
 
         <div class="paypal-button-wrapper">
 
@@ -504,7 +512,7 @@
       </div>
     </section>
 
-    <!-- THE PLAYER'S GUIDE - DIGITAL PRODUCT -->
+    <!-- THE PLAYER'S GUIDE -->
 
     <section class="shop">
       <div class="product">
@@ -515,6 +523,16 @@
           Your guide to strategy, self-development,
           relationships, and the Player One mindset.
         </p>
+
+        <!-- BOOK COVER IMAGE -->
+
+        <img
+          class="guide-cover"
+          src="players-guide-cover.png"
+          alt="The Players Guide – Part I book cover"
+        >
+
+        <!-- PAYHIP PURCHASE BUTTON -->
 
         <a
           href="https://payhip.com/b/mOHoW"
@@ -633,72 +651,45 @@
 
   <footer>
 
-    <!-- SOCIAL MEDIA LINKS -->
-
     <div class="social-links">
 
-      <a
-        href="https://www.instagram.com/phirstplayer"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://www.instagram.com/phirstplayer"
+         target="_blank" rel="noopener noreferrer">
         Instagram
       </a>
 
       |
 
-      <a
-        href="https://x.com/phirstplayer"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Twitter (X)
+      <a href="https://x.com/phirstplayer"
+         target="_blank" rel="noopener noreferrer">
+        X
       </a>
 
       |
 
-      <a
-        href="https://youtube.com/@PhirstPlayer"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://youtube.com/@PhirstPlayer"
+         target="_blank" rel="noopener noreferrer">
         YouTube
       </a>
 
       |
 
-      <a
-        href="https://tiktok.com/@phirstplayer"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://tiktok.com/@phirstplayer"
+         target="_blank" rel="noopener noreferrer">
         TikTok
       </a>
 
     </div>
 
-    <!-- LEGAL PAGES -->
-
     <nav class="legal-links" aria-label="Footer navigation">
 
       <a href="contact.html">CONTACT</a>
-
       <a href="terms.html">TERMS</a>
-
       <a href="privacy.html">PRIVACY</a>
-
       <a href="accessibility.html">ACCESSIBILITY</a>
-
       <a href="order-status.html">ORDER STATUS</a>
 
     </nav>
-
-    <p>
-      Contact:
-      <a href="mailto:support@phirstplayer.com">
-        support@phirstplayer.com
-      </a>
-    </p>
 
     <p class="footer-company">
       RUOY YOUNG CORPORATION
@@ -706,10 +697,9 @@
 
   </footer>
 
-  <!-- PLAYERS CIRCLE SUBSCRIPTION SCRIPT -->
+  <!-- PLAYERS CIRCLE SCRIPT -->
 
   <script>
-
   (function () {
 
     "use strict";
@@ -728,8 +718,6 @@
     let isSubmitting = false;
     let submissionTimer = null;
 
-    // OPEN POPUP
-
     function openModal() {
       modal.classList.add("is-open");
       modal.setAttribute("aria-hidden", "false");
@@ -740,45 +728,33 @@
       }, 100);
     }
 
-    // CLOSE POPUP
-
     function closeModal() {
-
       if (isSubmitting) return;
 
       modal.classList.remove("is-open");
       modal.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
-
     }
 
     openButton.addEventListener("click", openModal);
-
     closeButton.addEventListener("click", closeModal);
 
     modal.addEventListener("click", function (event) {
-
       if (event.target === modal) {
         closeModal();
       }
-
     });
 
     document.addEventListener("keydown", function (event) {
-
       if (
         event.key === "Escape" &&
         modal.classList.contains("is-open")
       ) {
         closeModal();
       }
-
     });
 
-    // RESET SUBMIT BUTTON
-
     function resetButton() {
-
       isSubmitting = false;
 
       submitButton.disabled = false;
@@ -788,20 +764,13 @@
         clearTimeout(submissionTimer);
         submissionTimer = null;
       }
-
     }
 
-    // DISPLAY RESPONSE
-
     function showMessage(text, success) {
-
       message.style.display = "block";
       message.style.color = success ? "#111111" : "#b00020";
       message.textContent = text;
-
     }
-
-    // SUBMIT SUBSCRIPTION
 
     form.addEventListener("submit", function (event) {
 
@@ -832,13 +801,10 @@
       );
 
       if (!tokenInput) {
-
         tokenInput = document.createElement("input");
         tokenInput.type = "hidden";
         tokenInput.name = "callbackToken";
-
         form.appendChild(tokenInput);
-
       }
 
       tokenInput.value = currentToken;
@@ -846,10 +812,7 @@
       submitButton.disabled = true;
       submitButton.textContent = "SUBMITTING...";
 
-      showMessage(
-        "Submitting your subscription...",
-        true
-      );
+      showMessage("Submitting your subscription...", true);
 
       submissionTimer = setTimeout(function () {
 
@@ -866,18 +829,13 @@
 
     });
 
-    // RECEIVE RESPONSE FROM GOOGLE APPS SCRIPT
-
     window.addEventListener("message", function (event) {
 
       const data = event.data;
 
       if (!data || typeof data !== "object") return;
-
       if (data.type !== "playersCircleResponse") return;
-
       if (!isSubmitting) return;
-
       if (data.token !== currentToken) return;
 
       resetButton();
@@ -910,7 +868,6 @@
     });
 
   })();
-
   </script>
 
 </body>
