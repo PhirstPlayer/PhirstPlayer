@@ -3,11 +3,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
   <title>Play Phirst Player</title>
+
   <meta name="description" content="Play Phirst Player online. Tap in and play.">
+
   <meta name="theme-color" content="#FFFFFF">
+
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
   <style>
@@ -17,11 +21,20 @@
       box-sizing: border-box;
     }
 
-    html, body {
+    html {
       width: 100%;
       height: 100%;
+      background: #FFFFFF;
+    }
+
+    body {
+      width: 100%;
+      height: 100%;
+      min-height: 100%;
       overflow: hidden;
       background: #FFFFFF;
+      margin: 0;
+      padding: 0;
     }
 
     .game-frame {
@@ -33,49 +46,12 @@
       border: none;
       display: block;
       background: #FFFFFF;
-      z-index: 1;
-    }
-
-    /* HOME LOGO BUTTON */
-    .home-button {
-      position: fixed;
-      top: calc(env(safe-area-inset-top, 0px) + 55px);
-      left: 66%;
-      transform: translateX(-50%);
-      z-index: 10;
-
-      width: 48px;
-      height: 48px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background: #FFFFFF;
-      border: 1px solid #EEEEEE;
-      border-radius: 50%;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-
-      text-decoration: none;
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .home-button img {
-      width: 34px;
-      height: 34px;
-      object-fit: contain;
-    }
-
-    .home-button:active {
-      transform: translateX(-50%) scale(0.94);
     }
   </style>
 </head>
 
 <body>
 
-  <!-- PHIRST PLAYER GAME -->
   <iframe
     class="game-frame"
     src="https://playerphirst.lovable.app"
@@ -83,19 +59,6 @@
     allow="autoplay; fullscreen; gamepad; web-share; clipboard-write"
     allowfullscreen>
   </iframe>
-
-  <!-- HOME BUTTON -->
-  <a
-    class="home-button"
-    href="https://phirstplayer.com/"
-    aria-label="Return to Phirst Player homepage"
-    title="Home">
-
-    <img
-      src="../walking-logo.png"
-      alt="Phirst Player Home">
-
-  </a>
 
 </body>
 </html>
