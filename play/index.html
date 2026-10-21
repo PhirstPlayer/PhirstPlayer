@@ -9,7 +9,6 @@
 <meta name="description" content="Play Phirst Player online. Tap in and play.">
 <meta name="theme-color" content="#FFFFFF">
 
-<!-- GOOGLE ANALYTICS -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-P9F3Y4GGLL"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -20,92 +19,83 @@ gtag('config', 'G-P9F3Y4GGLL');
 
 <style>
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html, body {
-    width: 100%;
-    min-height: 100%;
-    background: #FFFFFF;
-    font-family: Helvetica, Arial, sans-serif;
+  width: 100%;
+  min-height: 100%;
+  background: #FFFFFF;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 body {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 .game-frame {
-    display: block;
-    width: 100%;
-    height: 100vh;
-    height: 100dvh;
-    border: none;
-    background: #FFFFFF;
+  display: block;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  border: none;
+  background: #FFFFFF;
 }
 
+/* SHOP BUTTON */
 .shop-container {
-    width: 100%;
-    padding: 25px 15px 35px;
-    text-align: center;
-    background: #FFFFFF;
+  position: fixed;
+  top: 79%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 9999;
+  pointer-events: none;
 }
 
 .shop-now-btn {
-    display: inline-block;
-    padding: 14px 35px;
-    background: #000000;
-    color: #FFFFFF;
-    text-decoration: none;
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    border: 1px solid #000000;
-    border-radius: 4px;
-    transition: background 0.2s ease;
+  display: inline-block;
+  padding: 13px 35px;
+  background: #000000;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  pointer-events: auto;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .shop-now-btn:hover {
-    background: #333333;
-    color: #FFFFFF;
-}
-
-@media (max-width: 600px) {
-    .shop-container {
-        padding: 20px 15px 30px;
-    }
-
-    .shop-now-btn {
-        min-width: 170px;
-        padding: 14px 30px;
-    }
+  background: #333333;
+  color: #FFFFFF;
 }
 </style>
 </head>
 
 <body>
 
-<!-- PHIRST PLAYER GAME -->
 <iframe
-    class="game-frame"
-    src="https://playerphirst.lovable.app"
-    title="Phirst Player Game"
-    allow="autoplay; fullscreen; gamepad; web-share; clipboard-write"
-    allowfullscreen>
+  class="game-frame"
+  src="https://playerphirst.lovable.app"
+  title="Phirst Player Game"
+  allow="autoplay; fullscreen; gamepad; web-share; clipboard-write"
+  allowfullscreen>
 </iframe>
 
-<!-- SHOP NOW BUTTON -->
-<section class="shop-container">
-    <a
-        href="https://phirstplayer.com/#merchandise"
-        class="shop-now-btn">
-        SHOP NOW
-    </a>
-</section>
+<div class="shop-container">
+  <a
+    href="https://phirstplayer.com/#merchandise"
+    class="shop-now-btn">
+    SHOP NOW
+  </a>
+</div>
 
-<!-- FORWARD TRACKING PARAMETERS TO THE GAME -->
 <script>
 var f = document.querySelector('.game-frame');
 f.src = 'https://playerphirst.lovable.app' + location.search;
