@@ -23,7 +23,6 @@
       background: #FFFFFF;
     }
 
-    /* GAME */
     .game-frame {
       position: fixed;
       inset: 0;
@@ -36,19 +35,18 @@
       z-index: 1;
     }
 
-    /* HOME LOGO */
+    /* PHIRST PLAYER HOME BUTTON */
     .home-button {
       position: fixed;
 
-      /* Move UP into the control row */
-      top: -50px;
+      /* Align with GAME, LEADERBOARD and VOLUME */
+      top: 110px;
+      left: 65%;
 
-      /* Keep between leaderboard and volume */
-      left: 66%;
       transform: translateX(-50%);
 
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
 
       display: flex;
       align-items: center;
@@ -57,20 +55,21 @@
       background: #FFFFFF;
       border: 1px solid #EEEEEE;
       border-radius: 50%;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 
+      box-shadow: 0 2px 8px rgba(0,0,0,0.14);
+
+      z-index: 20;
       text-decoration: none;
       cursor: pointer;
-      z-index: 10;
 
       -webkit-tap-highlight-color: transparent;
     }
 
     .home-button img {
-      display: block;
-      width: 30px;
-      height: 30px;
+      width: 31px;
+      height: 31px;
       object-fit: contain;
+      display: block;
     }
 
     .home-button:active {
@@ -80,15 +79,15 @@
     /* DESKTOP */
     @media (min-width: 768px) {
       .home-button {
-        top: -50px;
-        left: 66%;
-        width: 42px;
-        height: 42px;
+        top: 110px;
+        left: 65%;
+        width: 44px;
+        height: 44px;
       }
 
       .home-button img {
-        width: 28px;
-        height: 28px;
+        width: 29px;
+        height: 29px;
       }
     }
   </style>
@@ -96,7 +95,7 @@
 
 <body>
 
-  <!-- PHIRST PLAYER GAME -->
+  <!-- GAME -->
   <iframe
     class="game-frame"
     src="https://playerphirst.lovable.app"
@@ -105,16 +104,15 @@
     allowfullscreen>
   </iframe>
 
-  <!-- HOME BUTTON -->
+  <!-- RETURN HOME BUTTON -->
   <a
     class="home-button"
     href="https://phirstplayer.com/"
-    aria-label="Return to Phirst Player homepage"
-    title="Home">
+    aria-label="Return to Phirst Player homepage">
 
     <img
       src="../walking-logo.png"
-      alt="Phirst Player Home">
+      alt="Phirst Player">
 
   </a>
 
