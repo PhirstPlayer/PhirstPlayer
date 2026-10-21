@@ -17,148 +17,85 @@
       box-sizing: border-box;
     }
 
-    html {
+    html, body {
       width: 100%;
-      min-height: 100%;
+      height: 100%;
+      overflow: hidden;
       background: #FFFFFF;
     }
-
-    body {
-      width: 100%;
-      min-height: 100vh;
-      min-height: 100dvh;
-      overflow-x: hidden;
-      background: #FFFFFF;
-    }
-
-    /* CENTERED GAME PAGE */
-
-    .game-page {
-      position: relative;
-      width: calc(100% - 32px);
-      max-width: 900px;
-      margin: 0 auto;
-      background: #FFFFFF;
-    }
-
-    /* GAME FRAME */
 
     .game-frame {
-      display: block;
+      position: fixed;
+      inset: 0;
       width: 100%;
-      height: 1400px;
-      max-height: 1600px;
+      height: 100vh;
+      height: 100dvh;
       border: none;
+      display: block;
       background: #FFFFFF;
+      z-index: 1;
     }
 
     /* HOME LOGO BUTTON */
-
     .home-button {
-      position: absolute;
-
-      top: calc(env(safe-area-inset-top, 0px) + 105px);
-      left: 68%;
-
+      position: fixed;
+      top: calc(env(safe-area-inset-top, 0px) + 55px);
+      left: 66%;
       transform: translateX(-50%);
+      z-index: 10;
 
-      z-index: 20;
-
-      width: 58px;
-      height: 80px;
+      width: 48px;
+      height: 48px;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
-      background: transparent;
-      border: none;
-      border-radius: 0;
-
-      box-shadow: none;
+      background: #FFFFFF;
+      border: 1px solid #EEEEEE;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 
       text-decoration: none;
       cursor: pointer;
-
       -webkit-tap-highlight-color: transparent;
     }
 
     .home-button img {
-      display: block;
-      width: 48px;
-      height: 76px;
+      width: 34px;
+      height: 34px;
       object-fit: contain;
     }
 
     .home-button:active {
       transform: translateX(-50%) scale(0.94);
     }
-
-    /* SMALL PHONES */
-
-    @media (max-width: 480px) {
-      .game-page {
-        width: 100%;
-      }
-
-      .game-frame {
-        height: 1400px;
-      }
-
-      .home-button {
-        top: calc(env(safe-area-inset-top, 0px) + 105px);
-        left: 68%;
-        width: 50px;
-        height: 70px;
-      }
-
-      .home-button img {
-        width: 43px;
-        height: 66px;
-      }
-    }
-
-    /* TABLETS AND DESKTOP */
-
-    @media (min-width: 900px) {
-      .game-page {
-        width: 90%;
-      }
-
-      .game-frame {
-        height: 1400px;
-      }
-    }
   </style>
 </head>
 
 <body>
 
-  <main class="game-page">
+  <!-- PHIRST PLAYER GAME -->
+  <iframe
+    class="game-frame"
+    src="https://playerphirst.lovable.app"
+    title="Phirst Player Game"
+    allow="autoplay; fullscreen; gamepad; web-share; clipboard-write"
+    allowfullscreen>
+  </iframe>
 
-    <!-- PHIRST PLAYER GAME -->
-    <iframe
-      class="game-frame"
-      src="https://playerphirst.lovable.app"
-      title="Phirst Player Game"
-      allow="autoplay; fullscreen; gamepad; web-share; clipboard-write"
-      allowfullscreen>
-    </iframe>
+  <!-- HOME BUTTON -->
+  <a
+    class="home-button"
+    href="https://phirstplayer.com/"
+    aria-label="Return to Phirst Player homepage"
+    title="Home">
 
-    <!-- HOME LOGO BUTTON -->
-    <a
-      class="home-button"
-      href="https://phirstplayer.com/"
-      aria-label="Return to Phirst Player homepage"
-      title="Home">
+    <img
+      src="../walking-logo.png"
+      alt="Phirst Player Home">
 
-      <img
-        src="../walking-logo.png"
-        alt="Phirst Player Home">
-
-    </a>
-
-  </main>
+  </a>
 
 </body>
 </html>
