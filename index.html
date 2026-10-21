@@ -62,6 +62,29 @@
       font-size: 20px;
     }
 
+    /* SHOP NOW BUTTON */
+
+    .shop-now-btn {
+      display: inline-block;
+      margin: 10px auto 15px;
+      padding: 14px 35px;
+      background: #000000;
+      color: #ffffff;
+      text-decoration: none;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      border: 1px solid #000000;
+      border-radius: 4px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .shop-now-btn:hover {
+      background: #333333;
+      color: #ffffff;
+    }
+
     /* GAME */
 
     .game-section {
@@ -411,6 +434,12 @@
         font-size: 18px;
       }
 
+      .shop-now-btn {
+        width: auto;
+        min-width: 170px;
+        padding: 14px 30px;
+      }
+
       .game-section {
         padding: 10px 10px 30px;
       }
@@ -486,6 +515,9 @@
     <section class="welcome-section">
       <h2>Welcome to the Players Circle</h2>
       <p>Tap in. Stay fly. Get access.</p>
+
+      <!-- SHOP NOW BUTTON -->
+      <a href="#merchandise" class="shop-now-btn">SHOP NOW</a>
     </section>
 
     <!-- PHIRST PLAYER GAME -->
@@ -498,19 +530,20 @@
           title="Phirst Player Game"
           allow="fullscreen; autoplay; gamepad"
           allowfullscreen
-          loading="eager">
-        </iframe>
+          loading="eager"
+        ></iframe>
       </div>
     </section>
 
-    <!-- EMBROIDERED LONG SLEEVE -->
+    <!-- EMBROIDERED LONG SLEEVE MERCHANDISE -->
 
-    <section class="shop">
+    <section class="shop" id="merchandise">
       <div class="product">
 
         <img
           src="embroidered-long-sleeve.png"
-          alt="Phirst Player Embroidered Long Sleeve">
+          alt="Phirst Player Embroidered Long Sleeve"
+        >
 
         <h3>Embroidered Long Sleeve</h3>
 
@@ -523,23 +556,27 @@
             action="https://www.paypal.com/ncp/payment/RNCQVJL6UTK98"
             method="post"
             target="_blank"
-            style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+            style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;"
+          >
 
             <input
               class="pp-RNCQVJL6UTK98"
               type="submit"
-              value="Buy Now">
+              value="Buy Now"
+            >
 
             <img
               src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg"
-              alt="Cards accepted">
+              alt="Cards accepted"
+            >
 
             <section style="font-size:0.75rem;">
               Powered by
               <img
                 src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg"
                 alt="PayPal"
-                style="height:0.875rem;vertical-align:middle;">
+                style="height:0.875rem;vertical-align:middle;"
+              >
             </section>
 
           </form>
@@ -567,17 +604,23 @@
           <span class="sale-price">$9.99</span>
         </p>
 
+        <!-- BOOK COVER IMAGE -->
+
         <img
           class="guide-cover"
           src="players-guide-cover.png"
-          alt="The Players Guide – Part I book cover">
+          alt="The Players Guide – Part I book cover"
+        >
+
+        <!-- PAYHIP PURCHASE BUTTON -->
 
         <a
           id="payhip-checkout-link"
           href="https://payhip.com/b/mOHoW"
           target="_blank"
           rel="noopener noreferrer"
-          class="payhip-button">
+          class="payhip-button"
+        >
           GET THE EBOOK
         </a>
 
@@ -589,7 +632,8 @@
     <button
       type="button"
       id="open-players-circle"
-      class="newsletter-open">
+      class="newsletter-open"
+    >
       JOIN THE CLUB
     </button>
 
@@ -600,19 +644,22 @@
   <div
     id="players-circle-modal"
     class="players-circle-modal"
-    aria-hidden="true">
+    aria-hidden="true"
+  >
 
     <div
       class="players-circle-popup"
       role="dialog"
       aria-modal="true"
-      aria-labelledby="players-circle-heading">
+      aria-labelledby="players-circle-heading"
+    >
 
       <button
         type="button"
         class="players-circle-close"
         id="close-players-circle"
-        aria-label="Close subscription window">×</button>
+        aria-label="Close subscription window"
+      >×</button>
 
       <h2 id="players-circle-heading">
         JOIN THE CLUB
@@ -622,7 +669,8 @@
         id="players-circle-form"
         action="https://script.google.com/macros/s/AKfycbz4PsD4xvVzoyw6vBnfiRmNBNlSOFOeiZgATOAqvBt5-ZGD-5HeOBKNfdcjE_dfieYi/exec"
         method="POST"
-        target="players-circle-frame">
+        target="players-circle-frame"
+      >
 
         <input
           type="email"
@@ -631,14 +679,16 @@
           class="players-circle-email"
           placeholder="EMAIL ADDRESS"
           autocomplete="email"
-          required>
+          required
+        >
 
         <label class="players-circle-consent">
 
           <input
             type="checkbox"
             id="players-circle-consent"
-            required>
+            required
+          >
 
           <span>
             I CONSENT TO RECEIVE PHIRST PLAYER EMAIL MARKETING.
@@ -653,7 +703,8 @@
         <button
           type="submit"
           id="players-circle-submit"
-          class="players-circle-submit">
+          class="players-circle-submit"
+        >
           NEXT
         </button>
 
@@ -663,16 +714,16 @@
         id="players-circle-message"
         class="players-circle-message"
         role="status"
-        aria-live="polite">
-      </div>
+        aria-live="polite"
+      ></div>
 
       <iframe
         name="players-circle-frame"
         id="players-circle-frame"
         class="players-circle-frame"
         title="Players Circle response"
-        aria-hidden="true">
-      </iframe>
+        aria-hidden="true"
+      ></iframe>
 
     </div>
   </div>
@@ -718,7 +769,7 @@
       <a href="privacy.html">PRIVACY</a>
       <a href="accessibility.html">ACCESSIBILITY</a>
       <a href="order-status.html">ORDER STATUS</a>
-      <a href="https://phirstplayer.com/play">PLAY</a>
+      <a href="/play/">PLAY</a>
 
     </nav>
 
@@ -745,39 +796,30 @@
     const submitButton = document.getElementById("players-circle-submit");
     const message = document.getElementById("players-circle-message");
 
-    /* GOOGLE ANALYTICS: PAYPAL CHECKOUT CLICK */
+    /* GOOGLE ANALYTICS CHECKOUT CLICK TRACKING */
 
-    const paypalCheckoutForm =
-      document.getElementById("paypal-checkout-form");
+    const paypalCheckoutForm = document.getElementById("paypal-checkout-form");
+    const payhipCheckoutLink = document.getElementById("payhip-checkout-link");
 
     if (paypalCheckoutForm) {
       paypalCheckoutForm.addEventListener("submit", function () {
-
         if (typeof gtag === "function") {
           gtag("event", "paypal_checkout_click", {
             event_category: "ecommerce",
             event_label: "Embroidered Long Sleeve"
           });
         }
-
       });
     }
 
-    /* GOOGLE ANALYTICS: PAYHIP CHECKOUT CLICK */
-
-    const payhipCheckoutLink =
-      document.getElementById("payhip-checkout-link");
-
     if (payhipCheckoutLink) {
       payhipCheckoutLink.addEventListener("click", function () {
-
         if (typeof gtag === "function") {
           gtag("event", "payhip_checkout_click", {
             event_category: "ecommerce",
             event_label: "The Player's Guide – Part I"
           });
         }
-
       });
     }
 
@@ -786,7 +828,6 @@
     let submissionTimer = null;
 
     function openModal() {
-
       modal.classList.add("is-open");
       modal.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
@@ -794,43 +835,35 @@
       setTimeout(function () {
         emailInput.focus();
       }, 100);
-
     }
 
     function closeModal() {
-
       if (isSubmitting) return;
 
       modal.classList.remove("is-open");
       modal.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
-
     }
 
     openButton.addEventListener("click", openModal);
     closeButton.addEventListener("click", closeModal);
 
     modal.addEventListener("click", function (event) {
-
       if (event.target === modal) {
         closeModal();
       }
-
     });
 
     document.addEventListener("keydown", function (event) {
-
       if (
         event.key === "Escape" &&
         modal.classList.contains("is-open")
       ) {
         closeModal();
       }
-
     });
 
     function resetButton() {
-
       isSubmitting = false;
 
       submitButton.disabled = false;
@@ -840,18 +873,13 @@
         clearTimeout(submissionTimer);
         submissionTimer = null;
       }
-
     }
 
     function showMessage(text, success) {
-
       message.style.display = "block";
       message.style.color = success ? "#111111" : "#b00020";
       message.textContent = text;
-
     }
-
-    /* PLAYERS CIRCLE FORM SUBMISSION */
 
     form.addEventListener("submit", function (event) {
 
@@ -910,8 +938,6 @@
 
     });
 
-    /* RECEIVE GOOGLE APPS SCRIPT CONFIRMATION */
-
     window.addEventListener("message", function (event) {
 
       const data = event.data;
@@ -930,8 +956,7 @@
 
       if (data.success === true) {
 
-        /* GOOGLE ANALYTICS: SUCCESSFUL SIGNUP */
-
+        // GOOGLE ANALYTICS: SUCCESSFUL PLAYERS CIRCLE SIGNUP
         if (typeof gtag === "function") {
           gtag("event", "sign_up", {
             method: "players_circle"
