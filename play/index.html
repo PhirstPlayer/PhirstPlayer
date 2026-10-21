@@ -6,9 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
   <title>Play Phirst Player</title>
-  <meta name="description" content="Play Phirst Player online. Tap in and play.">
+  <meta name="description" content="Play Phirst Player online.">
   <meta name="theme-color" content="#FFFFFF">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
   <style>
     * {
@@ -37,14 +36,14 @@
       z-index: 1;
     }
 
-    /* HOME LOGO BUTTON */
+    /* HOME LOGO */
     .home-button {
       position: fixed;
 
-      /* Align with the game's top control row */
-      top: 50px;
+      /* Move UP into the control row */
+      top: -50px;
 
-      /* Center in the open space between leaderboard and volume */
+      /* Keep between leaderboard and volume */
       left: 66%;
       transform: translateX(-50%);
 
@@ -81,7 +80,7 @@
     /* DESKTOP */
     @media (min-width: 768px) {
       .home-button {
-        top: 50px;
+        top: -50px;
         left: 66%;
         width: 42px;
         height: 42px;
@@ -92,7 +91,6 @@
         height: 28px;
       }
     }
-
   </style>
 </head>
 
@@ -107,7 +105,7 @@
     allowfullscreen>
   </iframe>
 
-  <!-- RETURN HOME BUTTON -->
+  <!-- HOME BUTTON -->
   <a
     class="home-button"
     href="https://phirstplayer.com/"
