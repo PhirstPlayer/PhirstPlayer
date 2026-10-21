@@ -24,6 +24,7 @@
       background: #FFFFFF;
     }
 
+    /* GAME */
     .game-frame {
       position: fixed;
       inset: 0;
@@ -39,13 +40,16 @@
     /* HOME LOGO BUTTON */
     .home-button {
       position: fixed;
-      top: calc(env(safe-area-inset-top, 0px) + 55px);
+
+      /* Align with the game's top control row */
+      top: 50px;
+
+      /* Center in the open space between leaderboard and volume */
       left: 66%;
       transform: translateX(-50%);
-      z-index: 10;
 
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
 
       display: flex;
       align-items: center;
@@ -58,18 +62,37 @@
 
       text-decoration: none;
       cursor: pointer;
+      z-index: 10;
+
       -webkit-tap-highlight-color: transparent;
     }
 
     .home-button img {
-      width: 34px;
-      height: 34px;
+      display: block;
+      width: 30px;
+      height: 30px;
       object-fit: contain;
     }
 
     .home-button:active {
       transform: translateX(-50%) scale(0.94);
     }
+
+    /* DESKTOP */
+    @media (min-width: 768px) {
+      .home-button {
+        top: 50px;
+        left: 66%;
+        width: 42px;
+        height: 42px;
+      }
+
+      .home-button img {
+        width: 28px;
+        height: 28px;
+      }
+    }
+
   </style>
 </head>
 
@@ -84,7 +107,7 @@
     allowfullscreen>
   </iframe>
 
-  <!-- HOME BUTTON -->
+  <!-- RETURN HOME BUTTON -->
   <a
     class="home-button"
     href="https://phirstplayer.com/"
