@@ -2,55 +2,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Play Phirst Player</title>
-  <meta name="description" content="Play Phirst Player online. Tap in and play.">
-  <meta name="theme-color" content="#FFFFFF">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-  <!-- GOOGLE ANALYTICS 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P9F3Y4GGLL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-P9F3Y4GGLL');
-  </script>
+<title>Play Phirst Player</title>
+<meta name="description" content="Play Phirst Player online. Tap in and play.">
+<meta name="theme-color" content="#FFFFFF">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P9F3Y4GGLL"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-P9F3Y4GGLL');
+</script>
 
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: #FFFFFF;
-    }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    .game-frame {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100vh;
-      height: 100dvh;
-      border: none;
-      display: block;
-      background: #FFFFFF;
-    }
-  </style>
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #FFFFFF;
+}
+
+.game-frame {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    border: none;
+    display: block;
+    background: #FFFFFF;
+}
+</style>
 </head>
 
 <body>
-  <iframe
+
+<iframe
     class="game-frame"
     src="https://playerphirst.lovable.app"
     title="Phirst Player Game"
     allow="autoplay; fullscreen; gamepad; web-share; clipboard-write"
     allowfullscreen>
-  </iframe>
+</iframe>
+
+<!-- Forward tracking parameters to the game -->
+<script>
+var f = document.querySelector('.game-frame');
+f.src = 'https://playerphirst.lovable.app' + location.search;
+</script>
+
 </body>
 </html>
