@@ -1,120 +1,42 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+.home-button {
+  position: fixed;
+  top: 109px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
 
-  <title>Play Phirst Player</title>
-  <meta name="description" content="Play Phirst Player online.">
-  <meta name="theme-color" content="#FFFFFF">
+  /* Shift into the gap between leaderboard and volume */
+  transform: translateX(105px);
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  width: 44px;
+  height: 44px;
 
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: #FFFFFF;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    .game-frame {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100vh;
-      height: 100dvh;
-      border: none;
-      display: block;
-      background: #FFFFFF;
-      z-index: 1;
-    }
+  background: #FFFFFF;
+  border: 1px solid #EEEEEE;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.14);
 
-    /* PHIRST PLAYER HOME BUTTON */
-    .home-button {
-      position: fixed;
+  z-index: 20;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
 
-      /* Align with GAME, LEADERBOARD and VOLUME */
-      top: 110px;
-      left: 65%;
+.home-button img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+}
 
-      transform: translateX(-50%);
-
-      width: 48px;
-      height: 48px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background: #FFFFFF;
-      border: 1px solid #EEEEEE;
-      border-radius: 50%;
-
-      box-shadow: 0 2px 8px rgba(0,0,0,0.14);
-
-      z-index: 20;
-      text-decoration: none;
-      cursor: pointer;
-
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .home-button img {
-      width: 31px;
-      height: 31px;
-      object-fit: contain;
-      display: block;
-    }
-
-    .home-button:active {
-      transform: translateX(-50%) scale(0.94);
-    }
-
-    /* DESKTOP */
-    @media (min-width: 768px) {
-      .home-button {
-        top: 110px;
-        left: 65%;
-        width: 44px;
-        height: 44px;
-      }
-
-      .home-button img {
-        width: 29px;
-        height: 29px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- GAME -->
-  <iframe
-    class="game-frame"
-    src="https://playerphirst.lovable.app"
-    title="Phirst Player Game"
-    allow="autoplay; fullscreen; gamepad; web-share; clipboard-write"
-    allowfullscreen>
-  </iframe>
-
-  <!-- RETURN HOME BUTTON -->
-  <a
-    class="home-button"
-    href="https://phirstplayer.com/"
-    aria-label="Return to Phirst Player homepage">
-
-    <img
-      src="../walking-logo.png"
-      alt="Phirst Player">
-
-  </a>
-
-</body>
-</html>
+@media (min-width: 768px) {
+  .home-button {
+    top: 109px;
+    transform: translateX(105px);
+  }
+}
