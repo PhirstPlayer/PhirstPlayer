@@ -9,10 +9,15 @@
 <meta name="description" content="Play Phirst Player online. Tap in and play.">
 <meta name="theme-color" content="#FFFFFF">
 
+<!-- GOOGLE ANALYTICS -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-P9F3Y4GGLL"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
+
+function gtag() {
+  dataLayer.push(arguments);
+}
+
 gtag('js', new Date());
 gtag('config', 'G-P9F3Y4GGLL');
 </script>
@@ -24,8 +29,10 @@ gtag('config', 'G-P9F3Y4GGLL');
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   width: 100%;
+  min-height: 100%;
   background: #FFFFFF;
   font-family: Helvetica, Arial, sans-serif;
 }
@@ -34,47 +41,57 @@ body {
   overflow-x: hidden;
 }
 
+/* GAME WINDOW */
 .game-frame {
   display: block;
   width: 100%;
-  height: 100vh;
-  height: 100dvh;
+  height: 78vh;
+  height: 78dvh;
   border: none;
   background: #FFFFFF;
 }
 
+/* WHITE CANVAS UNDER GAME */
 .shop-container {
   width: 100%;
   min-height: 90px;
-  padding: 14px 15px 25px;
+  padding: 12px 15px 25px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   background: #FFFFFF;
 }
 
+/* SHOP BUTTON */
 .shop-now-btn {
   display: inline-block;
   padding: 13px 35px;
   background: #000000;
   color: #FFFFFF;
   text-decoration: none;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: bold;
   letter-spacing: 1px;
   border: 1px solid #000000;
   border-radius: 4px;
+  text-align: center;
 }
 
 .shop-now-btn:hover {
   background: #333333;
   color: #FFFFFF;
 }
+
+.shop-now-btn:active {
+  background: #555555;
+}
 </style>
 </head>
 
 <body>
 
+<!-- PHIRST PLAYER GAME -->
 <iframe
   class="game-frame"
   src="https://playerphirst.lovable.app"
@@ -83,15 +100,21 @@ body {
   allowfullscreen>
 </iframe>
 
+<!-- SHOP BUTTON ON WHITE CANVAS -->
 <section class="shop-container">
-  <a href="https://phirstplayer.com/#merchandise" class="shop-now-btn">
+  <a
+    href="https://phirstplayer.com/#merchandise"
+    class="shop-now-btn">
     SHOP NOW
   </a>
 </section>
 
+<!-- FORWARD TRACKING PARAMETERS TO GAME -->
 <script>
-var f = document.querySelector('.game-frame');
-f.src = 'https://playerphirst.lovable.app' + location.search;
+var gameFrame = document.querySelector('.game-frame');
+
+gameFrame.src =
+  'https://playerphirst.lovable.app' + location.search;
 </script>
 
 </body>
